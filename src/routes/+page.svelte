@@ -186,6 +186,7 @@
 <style>
 	@import '@fontsource/permanent-marker';
 	@import '@fontsource/comfortaa';
+  @import '@fontsource/lora';
 
 	section {
 		display: flex;
@@ -318,6 +319,19 @@
 		border-right: none;
 	}
 
+  @media screen and (max-width: 1300px) {
+    .testimonials {
+      grid-template-columns: 1fr;
+    }
+    .testimonial {
+      border-right: none;
+      border-bottom: 2px solid #d1d7dc;
+    }
+    .testimonials .testimonial:last-of-type {
+      border-bottom: none;
+    }
+  }
+
 	.testimonial-author {
 		display: flex;
 		flex-direction: row;
@@ -362,7 +376,7 @@
 
 	.fade-to-black {
 		background: linear-gradient(#00000000, #000000ff 30%, #000000ff 70%, #00000000 100%);
-		font-family: fantasy;
+		font-family: 'Lora', serif;
 		color: transparent;
 		pointer-events: none;
 		position: fixed;
