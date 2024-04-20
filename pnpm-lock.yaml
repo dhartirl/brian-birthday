@@ -5,9 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@fontsource/comfortaa':
+    specifier: ^5.0.20
+    version: 5.0.20
   '@fontsource/fira-mono':
     specifier: ^4.5.10
     version: 4.5.10
+  '@fontsource/permanent-marker':
+    specifier: ^5.0.12
+    version: 5.0.12
+  '@fontsource/roboto':
+    specifier: ^5.0.13
+    version: 5.0.13
   '@neoconfetti/svelte':
     specifier: ^1.0.0
     version: 1.0.0
@@ -304,8 +313,20 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
+  /@fontsource/comfortaa@5.0.20:
+    resolution: {integrity: sha512-Sc6E4RQg0aLaLX5+5WjWdLIk6C4LEOm1tWcUhpUw6HhxVJ7l4Ev+m12pbj2M06IfwesaTeKBoLc93jDY6ZPJXg==}
+    dev: true
+
   /@fontsource/fira-mono@4.5.10:
     resolution: {integrity: sha512-bxUnRP8xptGRo8YXeY073DSpfK74XpSb0ZyRNpHV9WvLnJ7TwPOjZll8hTMin7zLC6iOp59pDZ8EQDj1gzgAQQ==}
+    dev: true
+
+  /@fontsource/permanent-marker@5.0.12:
+    resolution: {integrity: sha512-oWzi2gy3SuuhDbxB/eIh09CmhUnijM1heZsRSzV4o5HMSX7IEWjJTaZ8f1pdmwlmG02N21FGiCC5HsttiuJaKA==}
+    dev: true
+
+  /@fontsource/roboto@5.0.13:
+    resolution: {integrity: sha512-j61DHjsdUCKMXSdNLTOxcG701FWnF0jcqNNQi2iPCDxU8seN/sMxeh62dC++UiagCWq9ghTypX+Pcy7kX+QOeQ==}
     dev: true
 
   /@humanwhocodes/config-array@0.11.13:

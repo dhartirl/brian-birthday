@@ -1,34 +1,130 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import videoplayer from '$lib/images/videoplayer.png';
+	import hugo from '$lib/images/hugo.jpeg';
+	import deepak from '$lib/images/deepak.png';
+	import tim from '$lib/images/timcook.webp';
+
+	const courseItems = [
+		{
+			name: 'Introduction to Confetti Engineering',
+			description:
+				'This first session acts as an introduction to Confetti. We ask deep questions like "What is Confetti?", "How do we feel about it?" and "Who the hell uses the term Confetto?".'
+		},
+		{
+			name: 'Selecting the Right Confetti',
+			description:
+				'Before this course you probably thought there was only 1 type of confetti, right? WRONG! Not to worry though, as always Brian is here to enlighten us with his incisive commentary on the nature of confetti.'
+		},
+		{
+			name: 'Deploying Confetti at Scale',
+			description:
+				"How much confetti does your business need? A bucket? 2 buckets? A truck? Never underestimate your requirements again, with Brian's helpful tips on vertical and horizontal scaling to meet your confetti needs."
+		},
+		{
+			name: 'Ethical & Legal Implications of Confetti',
+			description:
+				'Confetti can be great fun, but did you know there are over 800 regulations relating to the creation, storage and dispersal of confetti? Brian helps us navigate the murky waters of Confetti-based Compliance and Governance in an intuitive and expert manner.'
+		},
+		{
+      name: 'Beyond Lottie: AI Generation, Physical Confetti Delivery and More',
+			description:
+				'Confetti has come a long way in the past decade. No one could have predicted the explosive growth of this industry (except Brian of course) and in this lecture Brian looks to what the future holds for confetti as an element of user experience design.'
+		},
+		{
+			name: 'Thomas Aquinas and the Ontology of Joy',
+			description:
+				'Confetti brings us joy, but what IS joy? Rounding out the course with a 6 hour philosophical tour-de-force, Brian explores the work of Thomas Aquinas, and how our perception of joy may or may not reflect the existence of a higher power.'
+		}
+	];
+
+	const testimonials = [
+		{
+			name: 'Tim Cook',
+			role: 'CEO at Apple Computers',
+			body: "Brian's words washed over me and I was born anew in the rivers of confetti. Truly an inspiring example of human ingenuity.",
+			avatar: tim
+		},
+		{
+			name: 'Deepak Chopra',
+			role: 'Indian-American Author',
+			body: 'When I first met Brian, I knew he was special. Something about his aura said to me that this is a man worth following.',
+			avatar: deepak
+		},
+		{
+			name: 'Hugo Byrne',
+			role: 'Welfare Queen',
+			body: "He just keeps talking about confetti. I don't get it. What's the big deal?",
+			avatar: hugo
+		}
+	];
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Confetti for Dummies: A Revolutionary Course by Brian Dwyer</title>
+	<meta name="description" content="Happy Birthday Brian!" />
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+	<h1>Confetti for Dummies: A Revolutionary Approach to User Experience</h1>
+	<h2>by Brian Dwyer (BSc, M.D, MPhil)</h2>
 
-		to your new<br />SvelteKit app
-	</h1>
+	<div class="welcome">
+		<picture>
+			<img src={videoplayer} alt="Welcome" />
+		</picture>
+	</div>
+
+	<p class="blurb">
+		The bestselling author of "50 Inappropriate Stories to Tell at Work" is back with a course
+		that's going to blow your mind.
+	</p>
+
+	<p class="blurb">
+		While living an ascetic life among monks in the Himalayas, Brian discovered the secret to
+		snazzing up any website. He took a vow never to share these secrets but now, for the first time,
+		he has bestowed upon us the ancient knowledge of his people.
+	</p>
+
+	<div class="course-breakdown">
+		<h2>Course Breakdown</h2>
+		<p class="blurb">
+			This course assumes no prior knowledge of confetti, and will take you from boring amateur to
+			black belt confetti master in <strong>just 6 quick lessons!</strong>
+			Here's a breakdown of what you can expect if you sign up:
+		</p>
+		{#each courseItems as item}
+			<div class="course-item">
+				<h3>{item.name}</h3>
+				<p>{item.description}</p>
+			</div>
+		{/each}
+	</div>
 
 	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
+		Still not convinced? Here are some testimonials from people whose lives were changed by taking
+		this course!
 	</h2>
 
-	<Counter />
+	<div class="testimonials">
+		{#each testimonials as item}
+			<div class="testimonial">
+				<div class="testimonial-author">
+					<img src={item.avatar} alt={item.name} class="testimonial-avatar" />
+					<div class="testimonial-authorDetails">
+						<span class="testimonial-authorName">{item.name}</span>
+						<span class="testimonial-authorRole">{item.role}</span>
+					</div>
+				</div>
+				<div class="testimonial-body">"{item.body}"</div>
+			</div>
+		{/each}
+	</div>
 </section>
 
 <style>
+	@import '@fontsource/permanent-marker';
+	@import '@fontsource/comfortaa';
+
 	section {
 		display: flex;
 		flex-direction: column;
@@ -38,15 +134,119 @@
 	}
 
 	h1 {
+		font-family: 'Permanent Marker', sans-serif;
+		font-size: 64px;
 		width: 100%;
 	}
+
+	.course-breakdown {
+		width: 100%;
+		background: #fff;
+		display: flex;
+		flex-direction: column;
+		grid-gap: 16px;
+		margin: 32px 0;
+		text-align: left;
+		padding: 32px;
+		border-radius: 8px;
+		border: 1px solid #d1d7dc;
+	}
+
+	.course-breakdown h2 {
+		font-family: 'Permanent Marker', sans-serif;
+		font-size: 48px;
+		font-weight: normal;
+		margin: 0;
+	}
+
+	.course-item {
+		padding: 16px;
+		font-size: 18px;
+		font-weight: bold;
+		border: 1px solid #d1d7dc;
+		border-radius: 8px;
+	}
+
+	.course-item h3 {
+		font-family: 'Comfortaa', sans-serif;
+		font-size: 24px;
+		font-weight: bold;
+		margin: 8px;
+		margin-bottom: 16px;
+	}
+	.course-item p {
+		margin: 0 8px;
+	}
+
+	.blurb {
+		font-size: 24px;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.testimonials {
+		background: #fff;
+    margin: 24px 0;
+		padding: 32px;
+		border: 1px solid #d1d7dc;
+		border-radius: 8px;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: 8px;
+	}
+
+	.testimonial {
+		padding: 16px;
+    border-right: 2px solid #d1d7dc;
+	}
+
+  .testimonials .testimonial:last-of-type {
+    border-right: none;
+  }
+
+	.testimonial-author {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		grid-gap: 8px;
+	}
+
+	.testimonial-avatar {
+		width: 64px;
+		height: 64px;
+		object-fit: cover;
+		border-radius: 50%;
+		border: 2px solid #d1d7dc;
+	}
+
+  .testimonial-authorDetails {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 4px;
+  }
+
+	.testimonial-authorName {
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+  .testimonial-authorRole {
+    color: #777;
+  }
+
+  .testimonial-body {
+    margin-top: 16px;
+    font-size: 20px;
+    line-height: 1.4;
+  }
 
 	.welcome {
 		display: block;
 		position: relative;
 		width: 100%;
 		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+		padding: 0 0 calc(100% * 980 / 1382) 0;
 	}
 
 	.welcome img {
