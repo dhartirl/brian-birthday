@@ -3,6 +3,9 @@
 	import hugo from '$lib/images/hugo.jpeg';
 	import deepak from '$lib/images/deepak.png';
 	import tim from '$lib/images/timcook.webp';
+	import brian from '$lib/images/Brian.png';
+
+	let showBrian = false;
 
 	const courseItems = [
 		{
@@ -26,7 +29,7 @@
 				'Confetti can be great fun, but did you know there are over 800 regulations relating to the creation, storage and dispersal of confetti? Brian helps us navigate the murky waters of Confetti-based Compliance and Governance in an intuitive and expert manner.'
 		},
 		{
-      name: 'Beyond Lottie: AI Generation, Physical Confetti Delivery and More',
+			name: 'Beyond Lottie: AI Generation, Physical Confetti Delivery and More',
 			description:
 				'Confetti has come a long way in the past decade. No one could have predicted the explosive growth of this industry (except Brian of course) and in this lecture Brian looks to what the future holds for confetti as an element of user experience design.'
 		},
@@ -65,59 +68,79 @@
 </svelte:head>
 
 <section>
-	<h1>Confetti for Dummies: A Revolutionary Approach to User Experience</h1>
-	<h2>by Brian Dwyer (BSc, M.D, MPhil)</h2>
+	<div class={`fade-to-black ${showBrian ? 'is-visible' : ''}`}>YOU DIED</div>
+	<img class={`brian ${showBrian ? 'is-angry' : ''}`} alt="Bet you like confetti now" src={brian} />
+	<div class={`page ${showBrian ? 'is-fading' : ''}`}>
+		<h1>Confetti for Dummies: A Revolutionary Approach to User Experience</h1>
+		<h2>by Brian Dwyer (BSc, M.D, MPhil)</h2>
 
-	<div class="welcome">
-		<picture>
-			<img src={videoplayer} alt="Welcome" />
-		</picture>
-	</div>
+		<div class="welcome">
+			<picture>
+				<img src={videoplayer} alt="Welcome" />
+			</picture>
+		</div>
 
-	<p class="blurb">
-		The bestselling author of "50 Inappropriate Stories to Tell at Work" is back with a course
-		that's going to blow your mind.
-	</p>
-
-	<p class="blurb">
-		While living an ascetic life among monks in the Himalayas, Brian discovered the secret to
-		snazzing up any website. He took a vow never to share these secrets but now, for the first time,
-		he has bestowed upon us the ancient knowledge of his people.
-	</p>
-
-	<div class="course-breakdown">
-		<h2>Course Breakdown</h2>
 		<p class="blurb">
-			This course assumes no prior knowledge of confetti, and will take you from boring amateur to
-			black belt confetti master in <strong>just 6 quick lessons!</strong>
-			Here's a breakdown of what you can expect if you sign up:
+			The bestselling author of "50 Inappropriate Stories to Tell at Work" is back with a course
+			that's going to blow your mind.
 		</p>
-		{#each courseItems as item}
-			<div class="course-item">
-				<h3>{item.name}</h3>
-				<p>{item.description}</p>
-			</div>
-		{/each}
-	</div>
 
-	<h2>
-		Still not convinced? Here are some testimonials from people whose lives were changed by taking
-		this course!
-	</h2>
+		<p class="blurb">
+			While living an ascetic life among monks in the Himalayas, Brian discovered the secret to
+			snazzing up any website. He took a vow never to share these secrets but now, for the first
+			time, he has bestowed upon us the ancient knowledge of his people.
+		</p>
 
-	<div class="testimonials">
-		{#each testimonials as item}
-			<div class="testimonial">
-				<div class="testimonial-author">
-					<img src={item.avatar} alt={item.name} class="testimonial-avatar" />
-					<div class="testimonial-authorDetails">
-						<span class="testimonial-authorName">{item.name}</span>
-						<span class="testimonial-authorRole">{item.role}</span>
-					</div>
+		<div class="course-breakdown">
+			<h2>Course Breakdown</h2>
+			<p class="blurb">
+				This course assumes no prior knowledge of confetti, and will take you from boring amateur to
+				black belt confetti master in <strong>just 6 quick lessons!</strong>
+				Here's a breakdown of what you can expect if you sign up:
+			</p>
+			{#each courseItems as item}
+				<div class="course-item">
+					<h3>{item.name}</h3>
+					<p>{item.description}</p>
 				</div>
-				<div class="testimonial-body">"{item.body}"</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
+
+		<h2>
+			Still not convinced? Here are some testimonials from people whose lives were changed by taking
+			this course!
+		</h2>
+
+		<div class="testimonials">
+			{#each testimonials as item}
+				<div class="testimonial">
+					<div class="testimonial-author">
+						<img src={item.avatar} alt={item.name} class="testimonial-avatar" />
+						<div class="testimonial-authorDetails">
+							<span class="testimonial-authorName">{item.name}</span>
+							<span class="testimonial-authorRole">{item.role}</span>
+						</div>
+					</div>
+					<div class="testimonial-body">"{item.body}"</div>
+				</div>
+			{/each}
+		</div>
+
+		<div class="feedback">
+			<p>You're really not interested? Please let us know by clicking the link below.</p>
+			<p />
+			<p>
+				<a
+					href="/"
+					on:click={(event) => {
+						event.preventDefault();
+						showBrian = !showBrian;
+					}}
+				>
+					I'm a boring developer that doesn't like confetti
+				</a>
+			</p>
+		</div>
 	</div>
 </section>
 
@@ -137,6 +160,27 @@
 		font-family: 'Permanent Marker', sans-serif;
 		font-size: 64px;
 		width: 100%;
+	}
+
+	.page {
+		transition: filter 5s ease;
+	}
+
+	.page.is-fading {
+		filter: grayscale();
+	}
+
+	.brian {
+		position: fixed;
+		transition: top 1s ease, filter 5s ease;
+		height: 150vh;
+		top: 100vh;
+		z-index: 500;
+	}
+
+	.brian.is-angry {
+		top: 20vh;
+		filter: grayscale();
 	}
 
 	.course-breakdown {
@@ -186,7 +230,7 @@
 
 	.testimonials {
 		background: #fff;
-    margin: 24px 0;
+		margin: 24px 0;
 		padding: 32px;
 		border: 1px solid #d1d7dc;
 		border-radius: 8px;
@@ -198,12 +242,12 @@
 
 	.testimonial {
 		padding: 16px;
-    border-right: 2px solid #d1d7dc;
+		border-right: 2px solid #d1d7dc;
 	}
 
-  .testimonials .testimonial:last-of-type {
-    border-right: none;
-  }
+	.testimonials .testimonial:last-of-type {
+		border-right: none;
+	}
 
 	.testimonial-author {
 		display: flex;
@@ -220,25 +264,56 @@
 		border: 2px solid #d1d7dc;
 	}
 
-  .testimonial-authorDetails {
-    display: flex;
-    flex-direction: column;
-    grid-gap: 4px;
-  }
+	.testimonial-authorDetails {
+		display: flex;
+		flex-direction: column;
+		grid-gap: 4px;
+	}
 
 	.testimonial-authorName {
 		font-weight: bold;
 		font-size: 20px;
 	}
 
-  .testimonial-authorRole {
-    color: #777;
-  }
+	.testimonial-authorRole {
+		color: #777;
+	}
 
-  .testimonial-body {
-    margin-top: 16px;
-    font-size: 20px;
-    line-height: 1.4;
+	.testimonial-body {
+		margin-top: 16px;
+		font-size: 20px;
+		line-height: 1.4;
+	}
+
+	.feedback {
+		text-align: center;
+		margin-bottom: 50px;
+		font-size: 20px;
+	}
+
+	.fade-to-black {
+		background: linear-gradient(#00000000, #000000ff 30%, #000000ff 70%, #00000000 100%);
+    font-family: fantasy;
+    color: transparent;
+		pointer-events: none;
+		position: fixed;
+		width: 100%;
+		height: 300px;
+		z-index: 5000;
+		top: 50%;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 120px;
+		transform: translateY(-50%);
+    transition: opacity 8s ease, color 12s ease;
+    opacity: 0;
+	}
+
+  .fade-to-black.is-visible {
+    opacity: 1;
+		color: #ff0000;
   }
 
 	.welcome {
