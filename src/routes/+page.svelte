@@ -1,9 +1,41 @@
 <script>
+	import { browser } from '$app/environment';
 	import videoplayer from '$lib/images/videoplayer.png';
 	import hugo from '$lib/images/hugo.jpeg';
 	import deepak from '$lib/images/deepak.png';
 	import tim from '$lib/images/timcook.webp';
 	import brian from '$lib/images/Brian.png';
+
+	import confetti from 'canvas-confetti';
+
+	let clickCount = 0;
+	let confettiText = 'Confetti!';
+
+	let confettiCanvas = null;
+	if (browser) {
+		confettiCanvas = document.querySelector('.confetti-canvas');
+	}
+	const myConfetti = confetti.create(confettiCanvas, { resize: true, useWorker: true });
+
+	const doConfetti = () => {
+		clickCount++;
+		confettiText = getConfettiText();
+		myConfetti({
+			ticks: 1000,
+			angle: 90,
+			particleCount: 400,
+      //shapes: ['square', 'square', 'circle', 'star'],
+      spread: 90,
+      scalar: 3,
+      startVelocity: 150
+		});
+	};
+
+	const getConfettiText = () => {
+		if (clickCount > 2) return `MORE${'!'.repeat(clickCount)}`;
+		if (clickCount > 0) return 'More...';
+		return 'Confetti!';
+	};
 
 	let showBrian = false;
 
@@ -69,6 +101,7 @@
 
 <section>
 	<div class={`fade-to-black ${showBrian ? 'is-visible' : ''}`}>YOU DIED</div>
+	<canvas class="confetti-canvas" />
 	<img class={`brian ${showBrian ? 'is-angry' : ''}`} alt="Bet you like confetti now" src={brian} />
 	<div class={`page ${showBrian ? 'is-fading' : ''}`}>
 		<h1>Confetti for Dummies: A Revolutionary Approach to User Experience</h1>
@@ -90,6 +123,12 @@
 			snazzing up any website. He took a vow never to share these secrets but now, for the first
 			time, he has bestowed upon us the ancient knowledge of his people.
 		</p>
+
+		<p class="blurb">Let's get started with some nice confetti!</p>
+
+		<div class="confetti-gen">
+			<button class="button" on:click={() => doConfetti()}>{confettiText}</button>
+		</div>
 
 		<div class="course-breakdown">
 			<h2>Course Breakdown</h2>
@@ -181,6 +220,32 @@
 	.brian.is-angry {
 		top: 20vh;
 		filter: grayscale();
+	}
+
+  .confetti-canvas {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 500;
+  }
+
+	.confetti-gen {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.button {
+		background: #1177bb;
+		color: #fff;
+		padding: 12px 32px;
+		font-size: 24px;
+		border-radius: 8px;
+		border: none;
 	}
 
 	.course-breakdown {
@@ -293,8 +358,8 @@
 
 	.fade-to-black {
 		background: linear-gradient(#00000000, #000000ff 30%, #000000ff 70%, #00000000 100%);
-    font-family: fantasy;
-    color: transparent;
+		font-family: fantasy;
+		color: transparent;
 		pointer-events: none;
 		position: fixed;
 		width: 100%;
@@ -307,14 +372,14 @@
 		justify-content: center;
 		font-size: 120px;
 		transform: translateY(-50%);
-    transition: opacity 8s ease, color 12s ease;
-    opacity: 0;
+		transition: opacity 8s ease, color 12s ease;
+		opacity: 0;
 	}
 
-  .fade-to-black.is-visible {
-    opacity: 1;
+	.fade-to-black.is-visible {
+		opacity: 1;
 		color: #ff0000;
-  }
+	}
 
 	.welcome {
 		display: block;
