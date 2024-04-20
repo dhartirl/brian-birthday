@@ -105,7 +105,7 @@
 	<img class={`brian ${showBrian ? 'is-angry' : ''}`} alt="Bet you like confetti now" src={brian} />
 	<div class={`page ${showBrian ? 'is-fading' : ''}`}>
 		<h1>Confetti for Dummies: A Revolutionary Approach to User Experience</h1>
-		<h2>by Brian Dwyer (BSc, M.D, MPhil)</h2>
+		<h2 class="subtitle">by Brian Dwyer (BSc, M.D, MPhil)</h2>
 
 		<div class="welcome">
 			<picture>
@@ -200,6 +200,10 @@
 		font-size: 64px;
 		width: 100%;
 	}
+
+  h2.subtitle {
+    text-align: center;
+  }
 
 	.page {
 		transition: filter 5s ease;
