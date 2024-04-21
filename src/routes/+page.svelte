@@ -451,6 +451,12 @@
 		opacity: 0;
 	}
 
+  @media screen and (max-width: 720px) {
+    .fade-to-black {
+      font-size: 15vw;
+    }
+  }
+
 	.fade-to-black.is-visible {
 		opacity: 1;
 		color: #ff0000;
