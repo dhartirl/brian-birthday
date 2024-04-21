@@ -163,8 +163,8 @@
 			<h2>Course Breakdown</h2>
 			<p class="blurb">
 				This course assumes no prior knowledge of confetti, and will take you from boring amateur to
-				black belt confetti master in just 6 quick lessons!
-				Here's a breakdown of what you can expect if you sign up:
+				black belt confetti master in just 6 quick lessons! Here's a breakdown of what you can
+				expect if you sign up:
 			</p>
 			{#each courseItems as item}
 				<div class="course-item">
@@ -226,9 +226,9 @@
 		flex: 0.6;
 	}
 
-  .text-center {
-    text-align: center;
-  }
+	.text-center {
+		text-align: center;
+	}
 
 	h1 {
 		font-family: 'Permanent Marker', sans-serif;
@@ -288,8 +288,8 @@
 	}
 
 	.about {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 16px;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -307,6 +307,7 @@
 	}
 
 	.course-breakdown {
+		box-sizing: border-box;
 		width: 100%;
 		background: #fff;
 		display: flex;
@@ -352,6 +353,7 @@
 	}
 
 	.testimonials {
+		box-sizing: border-box;
 		background: #fff;
 		margin: 24px 0;
 		padding: 32px;
@@ -373,11 +375,7 @@
 	}
 
 	@media screen and (max-width: 1300px) {
-		.course-breakdown {
-			box-sizing: border-box;
-		}
 		.testimonials {
-			box-sizing: border-box;
 			grid-template-columns: 1fr;
 		}
 		.testimonial {
@@ -451,11 +449,11 @@
 		opacity: 0;
 	}
 
-  @media screen and (max-width: 720px) {
-    .fade-to-black {
-      font-size: 15vw;
-    }
-  }
+	@media screen and (max-width: 720px) {
+		.fade-to-black {
+			font-size: 15vw;
+		}
+	}
 
 	.fade-to-black.is-visible {
 		opacity: 1;
