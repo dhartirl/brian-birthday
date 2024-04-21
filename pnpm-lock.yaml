@@ -19,6 +19,9 @@ devDependencies:
   '@fontsource/lora':
     specifier: ^5.0.17
     version: 5.0.17
+  '@fontsource/montserrat':
+    specifier: ^5.0.18
+    version: 5.0.18
   '@fontsource/permanent-marker':
     specifier: ^5.0.12
     version: 5.0.12
@@ -331,6 +334,10 @@ packages:
 
   /@fontsource/lora@5.0.17:
     resolution: {integrity: sha512-+mySGaReOJ9MqnchYKs2eAd2cVg+fbaZ+rIGUm29V0AjPfi0gfT+e5NaXaAAorRN1HdJOfWPwX1XUws7t/iokQ==}
+    dev: true
+
+  /@fontsource/montserrat@5.0.18:
+    resolution: {integrity: sha512-85JBs2rCdFK/VBdSb401e2lXk5gynVo2zi3Rh2Guem4WNtT2q52+V90o3KzjmajY3TPJvCZA/kI7R05ev7148g==}
     dev: true
 
   /@fontsource/permanent-marker@5.0.12:

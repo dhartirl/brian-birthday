@@ -5,6 +5,7 @@
 	import deepak from '$lib/images/deepak.png';
 	import tim from '$lib/images/timcook.webp';
 	import brian from '$lib/images/Brian.png';
+	import brian2 from '$lib/images/brian2.jpeg';
 
 	import confetti from 'canvas-confetti';
 
@@ -24,11 +25,18 @@
 			ticks: 1000,
 			angle: 90,
 			particleCount: 400,
-      //shapes: ['square', 'square', 'circle', 'star'],
-      spread: 90,
-      scalar: 3,
-      startVelocity: 150
+			//shapes: ['square', 'square', 'circle', 'star'],
+			spread: 90,
+			scalar: 3,
+			startVelocity: 150
 		});
+	};
+
+	const noConfetti = () => {
+		showBrian = true;
+		setTimeout(() => {
+			showBrian = false;
+		}, 10000);
 	};
 
 	const getConfettiText = () => {
@@ -130,11 +138,32 @@
 			<button class="button" on:click={() => doConfetti()}>{confettiText}</button>
 		</div>
 
+		<h1>About Brian</h1>
+		<div class="about">
+			<img class="about-image" src={brian2} alt="Brian, age 7" />
+			<div class="about-text">
+				<p>
+					Brian, an esteemed Head of Product, was born at a very young age in Dublin, Ireland:
+					renowned for its paper mills, which undoubtedly sparked his lifelong obsession with
+					confetti. By age five, he was already perfecting his confetti-throwing technique, a
+					passion that led him to a PhD in Particle Celebration Sciences. His groundbreaking
+					dissertation, "The Aerodynamics of Joy: Confetti in Wind Tunnels," forever changed the
+					festive decorations landscape.
+				</p>
+				<p>
+					Outside of work, Brian is a seasoned confetti cannon builder and a professional parade
+					critic. His contributions to celebratory technologies have earned him the prestigious
+					“Supreme Sprinkler” Award. But he's not stopping there — Brian hopes to join the esteemed
+					ranks of Chill Chaos someday, spreading his unique brand of sparkly joy worldwide.
+				</p>
+			</div>
+		</div>
+
 		<div class="course-breakdown">
 			<h2>Course Breakdown</h2>
 			<p class="blurb">
 				This course assumes no prior knowledge of confetti, and will take you from boring amateur to
-				black belt confetti master in <strong>just 6 quick lessons!</strong>
+				black belt confetti master in just 6 quick lessons!
 				Here's a breakdown of what you can expect if you sign up:
 			</p>
 			{#each courseItems as item}
@@ -145,7 +174,7 @@
 			{/each}
 		</div>
 
-		<h2>
+		<h2 class="text-center">
 			Still not convinced? Here are some testimonials from people whose lives were changed by taking
 			this course!
 		</h2>
@@ -173,10 +202,10 @@
 					href="/"
 					on:click={(event) => {
 						event.preventDefault();
-						showBrian = !showBrian;
+						noConfetti();
 					}}
 				>
-					I'm a boring developer that doesn't like confetti
+					I'm a boring developer that doesn't like confetti.
 				</a>
 			</p>
 		</div>
@@ -186,7 +215,8 @@
 <style>
 	@import '@fontsource/permanent-marker';
 	@import '@fontsource/comfortaa';
-  @import '@fontsource/lora';
+	@import '@fontsource/lora';
+	@import '@fontsource/montserrat';
 
 	section {
 		display: flex;
@@ -196,29 +226,33 @@
 		flex: 0.6;
 	}
 
+  .text-center {
+    text-align: center;
+  }
+
 	h1 {
 		font-family: 'Permanent Marker', sans-serif;
 		font-size: 64px;
 		width: 100%;
 	}
 
-  h2.subtitle {
-    text-align: center;
-  }
+	h2.subtitle {
+		text-align: center;
+	}
 
 	.page {
 		transition: filter 5s ease;
 	}
 
 	.page.is-fading {
-		filter: grayscale();
+		filter: grayscale() contrast(1.75) blur(2px);
 	}
 
 	.brian {
 		position: fixed;
 		transition: top 1s ease, filter 5s ease;
 		height: 150vh;
-		top: 100vh;
+		top: 150vh;
 		z-index: 500;
 	}
 
@@ -227,17 +261,17 @@
 		filter: grayscale();
 	}
 
-  .confetti-canvas {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    z-index: 500;
-  }
+	.confetti-canvas {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		pointer-events: none;
+		z-index: 500;
+	}
 
 	.confetti-gen {
 		display: flex;
@@ -251,6 +285,25 @@
 		font-size: 24px;
 		border-radius: 8px;
 		border: none;
+	}
+
+	.about {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		grid-gap: 16px;
+	}
+
+	.about-image {
+		border-radius: 8px;
+	}
+
+	@media screen and (max-width: 900px) {
+		.about {
+			flex-direction: column;
+		}
 	}
 
 	.course-breakdown {
@@ -319,18 +372,22 @@
 		border-right: none;
 	}
 
-  @media screen and (max-width: 1300px) {
-    .testimonials {
-      grid-template-columns: 1fr;
-    }
-    .testimonial {
-      border-right: none;
-      border-bottom: 2px solid #d1d7dc;
-    }
-    .testimonials .testimonial:last-of-type {
-      border-bottom: none;
-    }
-  }
+	@media screen and (max-width: 1300px) {
+		.course-breakdown {
+			box-sizing: border-box;
+		}
+		.testimonials {
+			box-sizing: border-box;
+			grid-template-columns: 1fr;
+		}
+		.testimonial {
+			border-right: none;
+			border-bottom: 2px solid #d1d7dc;
+		}
+		.testimonials .testimonial:last-of-type {
+			border-bottom: none;
+		}
+	}
 
 	.testimonial-author {
 		display: flex;
