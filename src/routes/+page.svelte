@@ -232,7 +232,7 @@
 
 	h1 {
 		font-family: 'Permanent Marker', sans-serif;
-		font-size: 64px;
+		font-size: 48px;
 		width: 100%;
 	}
 
